@@ -1,4 +1,4 @@
-# Base para Projeto 1 - Robótica 
+#Projeto 1 - Robótica 
 
 Nome do grupo: 
 
@@ -6,23 +6,11 @@ ____________
 
 Nome dos integrantes: 
 
-* pessoa 1
-* pessoa 2
-* pessoa 3
-* pessoa 4
+* CesarEzra Ades
+* Fabricio Neri Lima
+* Jean Silas Ferreira Sanandrez
 
+**Videos do conceito C**
 
-Visite sempre o enunciado abaixo para atualizacões: 
-
-[https://github.com/Insper/robot21.1/blob/main/projeto/projeto.md](https://github.com/Insper/robot21.1/blob/main/projeto/projeto.md)
-
-
-Correcões e atualizaćões do código lancadas depois serão postadas neste diretório do Github: 
-
-[https://github.com/Insper/robot21.1/tree/main/projeto/ros_projeto](https://github.com/Insper/robot21.1/tree/main/projeto/ros_projeto)
-
-
-Link para a página principal da disciplina: 
-[https://github.com/insper/robot21.1](https://github.com/insper/robot21.1)
-
+[Robô andando na pista](https://www.youtube.com/watch?v=opD_GfTo9PM)
 
