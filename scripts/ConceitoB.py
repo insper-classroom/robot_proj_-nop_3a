@@ -11,6 +11,8 @@ from __future__ import print_function, division
 # Depois o controlador do braço:
 #
 #    roslaunch mybot_description mybot_control2.launch 	
+
+#Importa todas as bibliotecas
 import rospy 
 import statsmodels.api as sm
 import numpy as np
@@ -218,6 +220,9 @@ def ajuste_linear_grafico_x_fy(mask):
     return mask_rgb, x_f, y_f 
     
 def corta_imagem(mask):
+    """
+        Corta a máscara em duas, lado direito e lado esquerdo
+    """
     x_medio = int(mask.shape[1]/2)
     
     img_e = mask[0:mask.shape[0], 0: x_medio + 50]
@@ -227,6 +232,10 @@ def corta_imagem(mask):
 
 
 def calcular_angulo_com_vertical(img, lm):
+    """
+        Calcula o ângulo da regressão com a vertical e retorna em graus
+    """
+    
     x_0 = lm[0][0]
     y_0 = lm[0][1]
     
@@ -285,6 +294,10 @@ def encontrar_contornos(mask):
     return contornos
 
 def area_contornos(contornos):
+    """
+        Roda um looping na lista de contornos e faz uma soma de todas as áreas
+    """
+
     area = 0
 
     for c in contornos:
@@ -294,15 +307,21 @@ def area_contornos(contornos):
 
     return area
 
-
-
 def centro_aruco(corner):
+    """
+        Calcula o centro do aruco e retorna como (x,y)
+    """
+
     Xa = int((corner[0][1][0]-corner[0][0][0])/2 + corner[0][0][0])
     Ya = int((corner[0][2][1]-corner[0][1][1])/2 + corner[0][1][1])
     return (Xa,Ya)
     
     
 def distanciaEuclidiana(Po,Pf):
+    """
+        Faz a distância euclidiana de um ponto ao outro e retorna a distância
+    """
+    
     Xo = Po[0]
     Yo = Po[1]
 
@@ -341,6 +360,11 @@ def encontrar_centro_dos_contornos(img, contornos):
     return img, lista_x, lista_y
 
 def morpho_limpa(mask):
+    """
+        Função que aplica um morph open e um morph close para tratar os buracos presentes em uma máscara
+        e retorna a máscara tratada
+    """
+    
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3,3))
     mask = cv2.morphologyEx( mask, cv2.MORPH_OPEN, kernel )
     mask = cv2.morphologyEx( mask, cv2.MORPH_CLOSE, kernel )    
