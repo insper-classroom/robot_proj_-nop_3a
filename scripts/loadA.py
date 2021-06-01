@@ -27,7 +27,7 @@ import sys
 import os
 import rospkg
 
-Missao = ("blue",12,"dog")
+Missao = ("orange",11,"cow")
 #--- Define Tag de teste
 id_to_find  = 200
 marker_size  = 20 #- [cm]
@@ -93,6 +93,11 @@ PARADA = False
 
 
 def detect(frame):
+    """
+        funcao que roda a rede neural e devolve uma imagem com o que foi detectado como também uma lista do que foi 
+        detecado e as sua certeza
+    """
+
     image = frame.copy()
     (h, w) = image.shape[:2]
     blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 0.007843, (300, 300), 127.5)
@@ -265,6 +270,10 @@ def ajuste_linear_grafico_x_fy(mask):
     return mask_rgb, x_f, y_f 
     
 def corta_imagem(mask):
+    """
+        funcao que corta a imagem em lado direito e esquerdo e devolve as duas
+    """
+
     x_medio = int(mask.shape[1]/2)
     
     img_e = mask[0:mask.shape[0], 0: x_medio + 50]
@@ -274,6 +283,10 @@ def corta_imagem(mask):
 
 
 def calcular_angulo_com_vertical(img, lm):
+    """
+        funcao que calcula o angulo formado entre a regressao e a vertical. Devolve o angulo em graus
+    """
+    
     x_0 = lm[0][0]
     y_0 = lm[0][1]
     
@@ -332,6 +345,10 @@ def encontrar_contornos(mask):
     return contornos
 
 def area_contornos(contornos):
+    """
+        Funcao que percorre os contornos e soma suas áreas, devolvendo a area total
+    """
+
     area = 0
 
     for c in contornos:
@@ -344,12 +361,20 @@ def area_contornos(contornos):
 
 
 def centro_aruco(corner):
+    """
+        Funcao que pega as coordenadas do aruco e devolve seu centro como (x,y)
+    """
+
     Xa = int((corner[0][1][0]-corner[0][0][0])/2 + corner[0][0][0])
     Ya = int((corner[0][2][1]-corner[0][1][1])/2 + corner[0][1][1])
     return (Xa,Ya)
     
     
 def distanciaEuclidiana(Po,Pf):
+    """
+        Funcao que calcula a distancia entre dois pontos e devolve
+    """
+
     Xo = Po[0]
     Yo = Po[1]
 
@@ -388,6 +413,10 @@ def encontrar_centro_dos_contornos(img, contornos):
     return img, lista_x, lista_y
 
 def morpho_limpa(mask):
+    """
+        Funcao que limpa os defeitos da mascara por meio do morph e retorna a máscara mais limpa
+    """
+
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3,3))
     mask = cv2.morphologyEx( mask, cv2.MORPH_OPEN, kernel )
     mask = cv2.morphologyEx( mask, cv2.MORPH_CLOSE, kernel )    
@@ -620,7 +649,7 @@ def roda_todo_frame(imagem):
 
         
 
-        if len(contornos) > 3 and VoltaPista == True:
+        if len(contornos) > 6 and VoltaPista == True:
             VoltaPista = False
             LinhaAmarela = True
             Creeper = False
