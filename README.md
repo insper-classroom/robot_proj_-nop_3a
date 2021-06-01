@@ -38,3 +38,12 @@ Para realizar o conceito B, foi necessário girar os creepers presentes no círc
 [Pegando o creeper verde](https://www.youtube.com/watch?v=-1osvyPIv2s&ab_channel=JeanSilasFerreiraSanandrez) 
 
 [Pegando o creeper Laranja](https://www.youtube.com/watch?v=szYMWNQaFHE&ab_channel=JeanSilasFerreiraSanandrez)
+
+
+**Video do Conceito A (Parcial)**
+
+[Creeper Azul na Base DOG](https://www.youtube.com/watch?v=PuIyQQryiAc&ab_channel=JeanSilasFerreiraSanandrez) 
+
+[Creeper Verde na Base HORSE](https://www.youtube.com/watch?v=OlGEWcGXRMM&t=1s) 
+
+[Creeper Laranja na Base Cow](https://www.youtube.com/watch?v=nG4aP9L-Bwg&ab_channel=Fabr%C3%ADcioNeriFabr%C3%ADcioNeri) 
